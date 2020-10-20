@@ -14,59 +14,70 @@ import firebase from "../../firebase.js";
 
 
 
-
  function Categories()
 {
   const [categorylist,setcategorylist]=useState([]);
-  const [displayCards,setDisplayCards]=useState(false);
+
+  var oldCategoryList = []
 
     // Function to retreive data from firebase
     const fetchFunction = () => {
       let Categorylist = []
-         // Fetching data from Image Storage for Card images
-        var storage=firebase.storage();
+     
         firebase.database().ref("Category").on("value", snapshot => {
 
           snapshot.forEach((snap) => {
-            
-            const temp_url = "";
-            // then -> returns a Promise
-            storage.ref().child(`Category/${snap.val().link}/Card.jpg`).getDownloadURL().then((url)=>{
-
-              temp_url = url;
-           
-            }).catch((error)=>{
-              console.log(error);
-            })
-
-               Categorylist.push({
-                imageurl:temp_url,
+              Categorylist.push({
                 link:snap.val().link,
                 title:snap.val().title,
+                cardImageLink : snap.val().cardImageLink
               });
-          
-        });
-        
-
+            })
+            
+            setcategorylist(Categorylist);
+            console.log(categorylist)
+            
       });
-        
-        return Categorylist
+      
     }
   
    useEffect(()=>{
-  
-      setcategorylist(fetchFunction)
-      setDisplayCards(true);
+     
+      fetchFunction()
 
+      // if(oldCategoryList!==categorylist){
+        
+      // categorylist.forEach(category => {
+      //           getimage(category.link).then((url) =>{
+      //               console.log("manik" + url)
+      //           })
+      //       });
+      //       oldCategoryList=categorylist
+      // }
+
+      
+    
       console.log('====================================');
-      console.log(displayCards);
+      // console.log(displayCards);
       console.log("Now displaying the list data")
       console.log(categorylist);
-      console.log(categorylist.length)
 
       console.log('====================================');
-  },[displayCards])
+  },[])
 
+//   const [cardsURLS, setCardURLS] = useState([])
+
+// const getimage=async (link)=>{
+   
+//     // then -> returns a Promise
+//     const url = await firebase.storage().ref().child(`Category/${link}/Card.jpg`).getDownloadURL()
+//         console.log(url)
+//         setCardURLS([...cardsURLS, url])
+//         // return url
+//  }
+
+
+  // let counter = 0;
 
     return (
       <>
@@ -87,9 +98,7 @@ import firebase from "../../firebase.js";
 
           {/* Rendering all the cards */}
 
-            {displayCards ? <h1>{categorylist.length}</h1> : <h1>"Loading categories"</h1>}
-
-          {/* {displayCards ? <Row className="justify-content-md-center">
+          <Row className="justify-content-md-center">
                 {categorylist.map((data, key) => {
                     
                 
@@ -105,19 +114,22 @@ import firebase from "../../firebase.js";
                               }}
                             >
                                 <Fade left>
-                                {console.log("entered"), console.log(data)}
-                                
+                                  
+                               
                               <div key={key}>
                                 <Link to={data.link}>
                                   <Card>
                                     <CardImg
-                                      src={data.imageurl}
+                                      src = {data.cardImageLink}
+                                      
+
                                       style={{
                                         width: "100%",
                                         height: 300,
                                         borderRadius: 8,
                                       }}
-                                    ></CardImg>
+                                    >
+                                    </CardImg>
                                 
                                     <CardImgOverlay
                                       style={{
@@ -127,6 +139,8 @@ import firebase from "../../firebase.js";
                                         objectFit: "cover",
                                         margin: 0,
                                         backgroundColor: "rgba(0,0,0,0.35)",
+                                        // backgroundImage: `url(${getimage(data.link)})`,
+
                                       }}
                                     >
                                     
@@ -141,10 +155,8 @@ import firebase from "../../firebase.js";
                         );
             })} </Row> 
             
-             : <h1>"Loading Cards"</h1>
-          }
             
-          */}
+         
         </Container>
       </div>
       
