@@ -12,13 +12,11 @@ import firebase from "../../firebase.js";
 
 // Importing the data of categories
 
-
-
  function Categories()
 {
   const [categorylist,setcategorylist]=useState([]);
 
-  var oldCategoryList = []
+  
 
     // Function to retreive data from firebase
     const fetchFunction = () => {
@@ -35,7 +33,6 @@ import firebase from "../../firebase.js";
             })
             
             setcategorylist(Categorylist);
-            console.log(categorylist)
             
       });
       
@@ -45,24 +42,6 @@ import firebase from "../../firebase.js";
      
       fetchFunction()
 
-      // if(oldCategoryList!==categorylist){
-        
-      // categorylist.forEach(category => {
-      //           getimage(category.link).then((url) =>{
-      //               console.log("manik" + url)
-      //           })
-      //       });
-      //       oldCategoryList=categorylist
-      // }
-
-      
-    
-      console.log('====================================');
-      // console.log(displayCards);
-      console.log("Now displaying the list data")
-      console.log(categorylist);
-
-      console.log('====================================');
   },[])
 
 //   const [cardsURLS, setCardURLS] = useState([])

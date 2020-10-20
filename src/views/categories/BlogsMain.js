@@ -12,6 +12,7 @@ import SectionCarousel from "../index-sections/SectionCarousel";
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
   return (
     <>
+    
       <ExamplesNavbar />
       {/* <ProfilePageHeader /> */}
 

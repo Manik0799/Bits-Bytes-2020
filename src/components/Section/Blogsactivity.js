@@ -16,6 +16,7 @@ import {
 function Blogsactivity({ blogsData }) {
   return (
     <>
+    
       <Row className="justify-content-md-center">
         {blogsData.map((data, key) => {
           return (

@@ -12,14 +12,14 @@ function DemoFooter() {
             <nav className="footer-nav fixed">
               <ul>
                 <li>
-                  <a href="mailto:bitsandbytes.in@gmail.com" target="_blank">
+                  <a href="mailto:bitsandbytes.in@gmail.com" >
                     <i className="fa fa-envelope-o fa-2x" />
                   </a>
                 </li>
                 <li>
                   <a
                     href="https://www.instagram.com/bitsandbytes.in/"
-                    target="_blank"
+                  
                   >
                     <i className="fa fa-instagram fa-2x" />
                   </a>

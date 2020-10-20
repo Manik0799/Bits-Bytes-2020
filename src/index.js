@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
@@ -16,40 +16,64 @@ import RegisterPage from "views/examples/RegisterPage.js";
 // Category Pages Import
 
 import BlogsMain from "views/categories/BlogsMain";
-import data from "./categoryData.js";
-
-import LandingPageCarouselData from "./LandingPageCarouselData";
-
-import firebase from "./firebase";
+import firebase from "firebase";
 
 
+var items=[];
+function getdata(){
+
+      firebase.database().ref("Category").on("value",snapshot=>{
+          var object;
+            snapshot.forEach((snap)=>{
+            object={
+              link:snap.val().link,
+              title:snap.val().title,
+              background:snap.val().background,
+              blog:snap.val().blog,
+              icon:snap.val().icon,
+              carousal:snap.val().caroausal,
+            }
+            
+          items.push(object);
+          })
+  })
+  return(
+    <>
+    </>
+  );
+
+}
+
+{getdata()}
+
+console.log(items);
 ReactDOM.render(
+  
   <BrowserRouter>
     <Switch>
       <Route path="/index" render={(props) => <Index {...props} />} />
-      {/* <Route
-        path="/nucleo-icons"
-        render={(props) => <NucleoIcons {...props} />}
-      /> */}
-
-      {/* Path to categories */}
-
-      {data.map((data, key) => (
+      {/* {console.log(items)} */}
+    
+      {items.map((data, key) => {
+        console.log(data)
+      return(
         <Route
           key={key}
           path={data.link}
           render={(props) => (
+            
             <BlogsMain
-              input={data.blogs}
-              pagename={data.name}
-              backimage={data.backimage}
-              roundimage={data.circleimage}
-              carouselData={LandingPageCarouselData}
+              input={data.blog}
+              pagename={data.title}
+              backimage={data.background}
+              roundimage={data.icon}
+              carouselData={data.carousal}
               {...props}
             />
           )}
-        />
-      ))}
+        />)}
+      )
+      }
 
       {/* <Route
         path="/profile-page"
