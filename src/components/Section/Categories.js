@@ -79,8 +79,7 @@ import firebase from "../../firebase.js";
 
           <Row className="justify-content-md-center">
                 {categorylist.map((data, key) => {
-                    
-                
+                  
                         return (
                           <Col lg="4" md="6" sm="2" className="ml-auto mr-auto">
                             <div
@@ -96,12 +95,11 @@ import firebase from "../../firebase.js";
                                   
                                
                               <div key={key}>
+                              {/* {console.log("Category Link - " + data.link)} */}
                                 <Link to={data.link}>
                                   <Card>
                                     <CardImg
                                       src = {data.cardImageLink}
-                                      
-
                                       style={{
                                         width: "100%",
                                         height: 300,
