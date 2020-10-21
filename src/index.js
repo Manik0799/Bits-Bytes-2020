@@ -61,7 +61,6 @@ ReactDOM.render(
           key={key}
           path={data.link}
           render={(props) => (
-            
             <BlogsMain
               input={data.blog}
               pagename={data.title}
@@ -70,9 +69,8 @@ ReactDOM.render(
               carouselData={data.carousal}
               {...props}
             />
-          )}
-        />)}
-      )
+          )}/>)
+          })
       }
 
       {/* <Route
