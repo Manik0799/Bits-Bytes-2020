@@ -1,56 +1,46 @@
-// import React,{useEffect} from "react";
-// import React from "react"
 import firebase from  "firebase";
 
+var fetchedData = []
 
-// var items=[];
-// const list=()=>{
-//      useEffect(()=>{
-//         firebase.database().ref("Category").on("value",snapshot=>{
-//             var object;
-//               snapshot.forEach((snap)=>{
-//               object={
-//                 link:snap.val().link,
-//                 title:snap.val().title,
-//                 background:snap.val().background,
-//                 blog:snap.val().blog,
-//                 icon:snap.val().icon,
-//                 carousal:snap.val().caroausal,
-//               }
-              
-//             items.push(object);
-//             })
-//      },[])
+const getCategoryData = () => {
+      //  Getting data from firebase
+    
+    var database = firebase.database();
+    var ref = database.ref("Category");
 
-// });
+    ref.on("value", gotData, errData)
 
-// }
-
-// list();
-
-// export default items;
+    function gotData(data) {
+      // data.val() is an object with the keys as category names
+      var categories = data.val()
+      var keys = Object.keys(categories)
+      
+      for(var i = 0; i<keys.length; i++){
+        var k = keys[i];
 
 
-export function getCategoryData() {
-      firebase.database().ref("Category").on("value",snapshot=>{
-            var items = []
+        var obj = {
+            link : categories[k].link,
+            title : categories[k].title,
+            backgroundImage : categories[k].background,
+            iconImage : categories[k].icon,
+            carouselImages : categories[k].caroausal,
+            blogs : categories[k].blog
+        }
+        
+        
+        fetchedData[i] = obj
+      }
 
-            snapshot.forEach((snap)=>{
-              const data = snap.val()
+      console.log("Fetched Data" ,fetchedData.length)
+     
 
-              items.push({
-                link : data.link,
-                title : data.title,
-                background : data.background,
-                blog : data.blog,
-                icon : data.icon,
-                carousal : data.caroausal
-              })
-            
-          })
+    }
 
-          return items
-  })
+    function errData (err){
+      console.log("Error : " + err)
+    }
 
-  
 }
+
+export default fetchedData
