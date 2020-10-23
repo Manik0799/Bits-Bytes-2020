@@ -32,7 +32,7 @@ const getCategoryData = () => {
         fetchedData[i] = obj
       }
 
-      console.log("Fetched Data" ,fetchedData.length)
+      console.log("Fetched Data" ,fetchedData[0])
      
 
     }
@@ -42,5 +42,7 @@ const getCategoryData = () => {
     }
 
 }
+
+getCategoryData()
 
 export default fetchedData

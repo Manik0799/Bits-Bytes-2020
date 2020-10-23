@@ -44,19 +44,7 @@ import firebase from "../../firebase.js";
 
   },[])
 
-//   const [cardsURLS, setCardURLS] = useState([])
 
-// const getimage=async (link)=>{
-   
-//     // then -> returns a Promise
-//     const url = await firebase.storage().ref().child(`Category/${link}/Card.jpg`).getDownloadURL()
-//         console.log(url)
-//         setCardURLS([...cardsURLS, url])
-//         // return url
-//  }
-
-
-  // let counter = 0;
 
     return (
       <>

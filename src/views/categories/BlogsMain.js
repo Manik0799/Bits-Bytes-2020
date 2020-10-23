@@ -9,7 +9,8 @@ import Blogsactivity from "components/Section/Blogsactivity";
 
 import SectionCarousel from "../index-sections/SectionCarousel";
 
-function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
+
+function BlogsMain({ blogData, pagename, backimage, roundimage, carouselData }) {
   return (
     <>
     
@@ -47,7 +48,7 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
           </div>
 
           {/* Blog Cards */}
-          <Blogsactivity blogsData={input} />
+          <Blogsactivity blogsData={blogData} />
 
           {/* Carousel Display on each category page */}
           <SectionCarousel items={carouselData} />
@@ -55,7 +56,11 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
           <DemoFooter />
         </Container>
       </div>
+    
+    
     </>
+
+  
   );
 }
 
