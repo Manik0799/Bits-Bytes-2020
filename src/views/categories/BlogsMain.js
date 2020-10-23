@@ -59,7 +59,12 @@ function BlogsMain({ blogData, pagename, backimage, roundimage, carouselData }) 
     
     
     </>
+<<<<<<< HEAD
 
+=======
+  
+  
+>>>>>>> 9b2784b9ea112e5e1c26f2e034ab984cdd658b27
   
   );
 }

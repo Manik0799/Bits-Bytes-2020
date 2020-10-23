@@ -1,10 +1,11 @@
 import firebase from  "firebase";
 
-var fetchedData = []
+var fetchedData = [];
 
-const getCategoryData = () => {
+const getCategoryData = async() => {
       //  Getting data from firebase
     
+<<<<<<< HEAD
     var database = firebase.database();
     var ref = database.ref("Category");
 
@@ -46,3 +47,22 @@ const getCategoryData = () => {
 getCategoryData()
 
 export default fetchedData
+=======
+      firebase.database().ref("Category").on("value", snapshot => {
+
+        snapshot.forEach((snap) => {
+            fetchedData.push({
+              link:snap.val().link,
+              title:snap.val().title,
+              iconimage:snap.val().icon,
+              backgroundImage:snap.val().background,
+              carouselImages:snap.val().caroausal,
+            });
+          })});
+
+}
+
+getCategoryData();
+
+export default fetchedData;
+>>>>>>> 9b2784b9ea112e5e1c26f2e034ab984cdd658b27
