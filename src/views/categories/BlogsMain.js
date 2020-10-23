@@ -56,6 +56,9 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
         </Container>
       </div>
     </>
+  
+  
+  
   );
 }
 

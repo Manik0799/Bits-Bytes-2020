@@ -16,62 +16,78 @@ import RegisterPage from "views/examples/RegisterPage.js";
 
 import BlogsMain from "views/categories/BlogsMain";
 
-import fetchedData from "categoryData"
+import fetchedData from "categoryData";
 
 
-console.log(fetchedData)
+console.log(fetchedData);
+
 
 ReactDOM.render(
   <BrowserRouter>
+
     <Switch>
 
      {/* Individual Page Route */}
-      { 
-        fetchedData.map((data, key) => {
-        return (
-          <Route 
-            key = {key}
-            path = {data.link}
-            render = {(props) => (
-                <BlogsMain
-                  input={data.blog}
-                  pagename={data.title}
-                  backimage={data.background}
-                  roundimage={data.icon}
-                  carouselData={data.carousal}
-                  {...props}
-                />
-                
-            )}
-          />
-        )
-      })}
+  
+    
       
-   
+      { 
+        fetchedData.map((data, key) =>
+        {
+          console.log(data)
+          return(
+           <Route 
+           kay={key}
+           path = {data.link}
+          
+           render = {(props) => (
+               <BlogsMain
+                 input={data.blogs}
+                 pagename={data.title}
+                 backimage={data.backgroundImage}
+                 roundimage={data.iconImage}
+                 carouselData={data.carouselImages}
+                 {...props}
+               />
+               
+           )}
+         />)
+          
+        }
+        )}
+      
+       
+
+
+       
+{/*    
+   {fetchedData.forEach(data => {
+     console.log(data)
+     return(
+      <Route 
+      path = {data.link}
+      render = {(props) => (
+          <BlogsMain
+            input={data.blog}
+            pagename={data.title}
+            backimage={data.background}
+            roundimage={data.icon}
+            carouselData={data.carousal}
+            {...props}
+          />
+          
+      )}
+    />)
+     
+   })}
+ */}
+
+
+
+
     {/* Index Route */}
       <Route path="/index" render={(props) => <Index {...props} />} />
     
-<<<<<<< HEAD
-      {items.map((data, key) => {
-        console.log(data)
-      return(
-        <Route
-          key={key}
-          path={data.link}
-          render={(props) => (
-            <BlogsMain
-              input={data.blog}
-              pagename={data.title}
-              backimage={data.background}
-              roundimage={data.icon}
-              carouselData={data.carousal}
-              {...props}
-            />
-          )}/>)
-          })
-      }
-=======
->>>>>>> 7711e4d880d6ba7b246dfc3ce809125b47d06716
 
       <Route
         path="/register-page"
