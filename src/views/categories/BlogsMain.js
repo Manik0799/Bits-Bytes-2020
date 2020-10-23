@@ -9,62 +9,61 @@ import Blogsactivity from "components/Section/Blogsactivity";
 
 import SectionCarousel from "../index-sections/SectionCarousel";
 
+// { blogData, pagename, backimage, roundimage, carouselData }
 
-function BlogsMain({ blogData, pagename, backimage, roundimage, carouselData }) {
+function BlogsMain({pagename}) {
+  console.log(pagename)
   return (
-    <>
+    <h1>Blog main {pagename}</h1>
+    // <>
     
-      <ExamplesNavbar />
-      {/* <ProfilePageHeader /> */}
+    //   <ExamplesNavbar />
+    //   {/* <ProfilePageHeader /> */}
 
-      {/* To display the page header image */}
-      <div
-        style={{
-          backgroundImage: "url(" + backimage + ")",
-        }}
-        className="page-header page-header-xs"
-        data-parallax={true}
-        // ref={pageHeader}
-      >
-        <div className="filter" />
-      </div>
+    //   {/* To display the page header image */}
+    //   {/* <div
+    //     style={{
+    //       backgroundImage: "url(" + backimage + ")",
+    //     }}
+    //     className="page-header page-header-xs"
+    //     data-parallax={true}
+    //     // ref={pageHeader}
+    //   >
+    //     <div className="filter" />
+    //   </div> */}
 
-      <div className="section profile-content">
-        <Container>
-          <div className="owner">
-            <div className="avatar">
-              <img
-                alt="..."
-                className="img-circle img-no-padding img-responsive"
-                src={roundimage}
-              />
-            </div>
-            <div className="name">
-              <h4 className="title">
-                {pagename}
-                <br />
-              </h4>
-            </div>
-          </div>
+    //   <div className="section profile-content">
+    //     <Container>
+    //       <div className="owner">
+    //         <div className="avatar">
+    //           <img
+    //             alt="..."
+    //             className="img-circle img-no-padding img-responsive"
+    //             src={roundimage}
+    //           />
+    //         </div>
+    //         <div className="name">
+    //           <h4 className="title">
+    //             {pagename}
+    //             <br />
+    //           </h4>
+    //         </div>
+    //       </div>
 
-          {/* Blog Cards */}
-          <Blogsactivity blogsData={blogData} />
+    //       {/* Blog Cards */}
+    //       <Blogsactivity blogsData={blogData} />
 
-          {/* Carousel Display on each category page */}
-          <SectionCarousel items={carouselData} />
+    //       {/* Carousel Display on each category page */}
+    //       <SectionCarousel items={carouselData} />
 
-          <DemoFooter />
-        </Container>
-      </div>
+    //       <DemoFooter />
+    //     </Container>
+    //   </div>
     
     
-    </>
-<<<<<<< HEAD
-
-=======
+    // </>
   
   
->>>>>>> 9b2784b9ea112e5e1c26f2e034ab984cdd658b27
   
   );
 }

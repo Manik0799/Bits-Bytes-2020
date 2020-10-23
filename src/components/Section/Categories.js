@@ -38,9 +38,9 @@ import firebase from "../../firebase.js";
       
     }
   
-   useEffect(()=>{
+   useEffect(async ()=>{
      
-      fetchFunction()
+      await fetchFunction()
 
   },[])
 

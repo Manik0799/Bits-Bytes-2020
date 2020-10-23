@@ -7,15 +7,15 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss?v=1.2.0";
 import "assets/demo/demo.css?v=1.2.0";
 
+import {Switch, Route, Redirect} from "react-router-dom"
 
-import App from "./App"
 
-<<<<<<< HEAD
+import RegisterPage from "./views/examples/RegisterPage"
+import Index from "./views/examples/LandingPage"
 
-ReactDOM.render(
-  <BrowserRouter>
-      <App />
-=======
+import TestPage from "./views/categories/TestPage"
+// import App from "./App"
+
 // Category Pages Import
 
 import BlogsMain from "views/categories/BlogsMain";
@@ -23,7 +23,33 @@ import BlogsMain from "views/categories/BlogsMain";
 import fetchedData from "categoryData";
 
 
+const data = [
+  {
+    id: 1,
+    name: "Unpredictable Utopia",
+    image:
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80",
+
+    link: "/travel",
+    backimage: require("assets/Category-Header-Images/Travel.jpg"),
+    circleimage: require("assets/img/faces/joe-gardner-2.jpg"),
+    
+  },
+  {
+    id: 2,
+    name: "Bold is the new beautiful",
+    image:
+      "https://images.unsplash.com/3/www.madebyvadim.com.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=1061&q=80",
+    link: "/fashion",
+    backimage: require("assets/Category-Header-Images/fashion.jpg"),
+    circleimage: require("assets/img/faces/joe-gardner-2.jpg"),
+   
+  },
+  
+];
+
 console.log(fetchedData);
+
 
 
 ReactDOM.render(
@@ -33,32 +59,33 @@ ReactDOM.render(
 
      {/* Individual Page Route */}
   
-    
+      {/* {fetchedData} */}
       
       { 
         fetchedData.map((data, key) =>
-        {
-          console.log(data)
-          return(
+        (
            <Route 
-           kay={key}
+           key={key}
            path = {data.link}
           
            render = {(props) => (
-               <BlogsMain
-                 input={data.blogs}
-                 pagename={data.title}
-                 backimage={data.backgroundImage}
-                 roundimage={data.iconImage}
-                 carouselData={data.carouselImages}
-                 {...props}
-               />
+              //  <BlogsMain
+              //   //  input={data.blogs}
+              //    pagename={data.title}
+              //   //  backimage={data.backgroundImage}
+              //   //  roundimage={data.iconImage}
+              //   //  carouselData={data.carouselImages}
+              //   //  {...props}
+              //  />
+              <TestPage />
                
            )}
-         />)
+         />
+         
           
+        )
+        )
         }
-        )}
       
        
 
@@ -100,7 +127,6 @@ ReactDOM.render(
       <Redirect to="/index" />
 
     </Switch>
->>>>>>> 9b2784b9ea112e5e1c26f2e034ab984cdd658b27
   </BrowserRouter>,
   document.getElementById("root")
 );
