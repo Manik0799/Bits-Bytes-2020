@@ -1,97 +1,74 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom"
 
 // styles
 import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss?v=1.2.0";
 import "assets/demo/demo.css?v=1.2.0";
 
-// pages
-import Index from "views/examples/LandingPage.js";
 
-import RegisterPage from "views/examples/RegisterPage.js";
+import RegisterPage from "./views/examples/RegisterPage"
+import Index from "./views/examples/LandingPage"
+import TestPage from "./views/categories/TestPage"
 
-// Category Pages Import
-
+// Category Page Component import
 import BlogsMain from "views/categories/BlogsMain";
-
-import fetchedData from "categoryData";
-
-
-console.log(fetchedData);
+// Getting all the data about each individual category from firebase
+import getCategoryData from "categoryData";
 
 
-ReactDOM.render(
-  <BrowserRouter>
+getCategoryData((fetchedData)=>{
 
-    <Switch>
+  console.log("Logging fetched data in index.js");
+  console.log( fetchedData)
 
-     {/* Individual Page Route */}
-  
-    
+  ReactDOM.render(
+    <BrowserRouter>
+
+      <Switch>
       
-      { 
-        fetchedData.map((data, key) =>
-        (
-           <Route 
-           kay={key}
-           path = {data.link}
-          
-           render = {(props) => (
-               <BlogsMain
-                 input={data.blogs}
-                 pagename={data.title}
-                 backimage={data.backgroundImage}
-                 roundimage={data.iconImage}
-                 carouselData={data.carouselImages}
-                 {...props}
-               />
-               
-           )}
-         />
-        ))}
-      
-       
+        {/* Individual Page Route */}
+
+        {
+          fetchedData.map((data, key) =>
+            (
+              <Route
+                key={key}
+                path={`/${data.link}`}
+
+                render={(props) => (
+                  <BlogsMain
+                    input={data.blogs}
+                    pagename={data.title}
+                    backimage={data.backgroundImage}
+                    roundimage={data.iconImage}
+                    carouselData={data.carouselImages}
+                    {...props}
+                  />
+
+                )}
+              />
 
 
-       
-{/*    
-   {fetchedData.forEach(data => {
-     console.log(data)
-     return(
-      <Route 
-      path = {data.link}
-      render = {(props) => (
-          <BlogsMain
-            input={data.blog}
-            pagename={data.title}
-            backimage={data.background}
-            roundimage={data.icon}
-            carouselData={data.carousal}
-            {...props}
-          />
-          
-      )}
-    />)
-     
-   })}
- */}
+            )
+          )
+        }
 
 
+        {/* Index Route */}
+        <Route path="/index" render={(props) => <Index {...props} />} />
 
+        <Route
+          path="/register-page"
+          render={(props) => <RegisterPage {...props} />}
+        />
+        <Redirect to="/index" />
 
-    {/* Index Route */}
-      <Route path="/index" render={(props) => <Index {...props} />} />
-    
+      </Switch>
+    </BrowserRouter>,
+    document.getElementById("root")
+  );
 
-      <Route
-        path="/register-page"
-        render={(props) => <RegisterPage {...props} />}
-      />
-      <Redirect to="/index" />
-
-    </Switch>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+})

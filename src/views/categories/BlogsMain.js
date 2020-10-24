@@ -1,18 +1,23 @@
 import React from "react";
 import { Container } from "reactstrap";
 
-// core components
-// import ProfilePageHeader from "../../components/Headers/ProfilePageHeader";
+// components to show
 import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar";
 import DemoFooter from "../../components/Footers/DemoFooter.js";
 import Blogsactivity from "components/Section/Blogsactivity";
-
 import SectionCarousel from "../index-sections/SectionCarousel";
 
+
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
+  // console.log("Data Inside category")
+  // console.log(input)
+  // console.log(pagename)
+  // console.log(backimage)
+  // console.log(roundimage)
+  // console.log(carouselData)
   return (
     <>
-    
+
       <ExamplesNavbar />
       {/* <ProfilePageHeader /> */}
 
@@ -31,13 +36,16 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
       <div className="section profile-content">
         <Container>
           <div className="owner">
-            <div className="avatar">
+            {/* <div className="avatar">
               <img
                 alt="..."
                 className="img-circle img-no-padding img-responsive"
                 src={roundimage}
               />
-            </div>
+            </div> */}
+            <div style={{
+              height:"100%",
+            }}>
             <div className="name">
               <h4 className="title">
                 {pagename}
@@ -45,18 +53,22 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
               </h4>
             </div>
           </div>
-
+          
           {/* Blog Cards */}
-          <Blogsactivity blogsData={input} />
+          {input? <Blogsactivity blogsData={input} />:<h5></h5>}
+         
 
           {/* Carousel Display on each category page */}
-          <SectionCarousel items={carouselData} />
-
-          <DemoFooter />
+          
+          {carouselData?<SectionCarousel data={carouselData} />:<h5></h5>}
+          </div>
         </Container>
       </div>
+
+    
+      <DemoFooter />
     </>
-  
+
   
   
   );

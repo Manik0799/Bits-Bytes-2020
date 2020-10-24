@@ -6,17 +6,10 @@ import { Link } from "react-router-dom";
 
 import firebase from "../../firebase.js";
 
-// Importing card Data from firebase
-// import Categorylist from "./fetchingCardLogic"
-
-
-// Importing the data of categories
 
  function Categories()
 {
   const [categorylist,setcategorylist]=useState([]);
-
-  
 
     // Function to retreive data from firebase
     const fetchFunction = () => {
@@ -38,25 +31,12 @@ import firebase from "../../firebase.js";
       
     }
   
-   useEffect(()=>{
+   useEffect( ()=>{
      
-      fetchFunction()
+       fetchFunction()
 
   },[])
 
-//   const [cardsURLS, setCardURLS] = useState([])
-
-// const getimage=async (link)=>{
-   
-//     // then -> returns a Promise
-//     const url = await firebase.storage().ref().child(`Category/${link}/Card.jpg`).getDownloadURL()
-//         console.log(url)
-//         setCardURLS([...cardsURLS, url])
-//         // return url
-//  }
-
-
-  // let counter = 0;
 
     return (
       <>

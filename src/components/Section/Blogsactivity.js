@@ -14,13 +14,23 @@ import {
 } from "reactstrap";
 
 function Blogsactivity({ blogsData }) {
+ 
+  const arrayOfObj = Object.values(blogsData);
+  var array=[];
+  function func(value)
+  {
+    return (!value);
+  }
   return (
+   
     <>
-    
       <Row className="justify-content-md-center">
-        {blogsData.map((data, key) => {
+        {arrayOfObj.map((data, key) => {
+          {array.push(false)}
           return (
+          
             <div key={key}>
+              
               {/* {data.represent=="hide"? */}
               <Col lg="4" md="6" sm="6" className="justify-content-md-center">
                 <Card style={{ width: "20rem" }}>
@@ -41,7 +51,13 @@ function Blogsactivity({ blogsData }) {
                       {data.category}
                     </Badge>
                   </CardImgOverlay>
-                  <CardImg top src={data.image} alt={data.category} />
+                  <div style={{
+                    width:"300",
+                    height:"500"
+                  }}>
+                  <CardImg top src={data.blogimage} alt={data.category}
+                   />
+                   </div>
 
                   <CardBody>
                     <CardTitle style={{ fontWeight: 400, fontSize: 16 }}>
@@ -55,8 +71,9 @@ function Blogsactivity({ blogsData }) {
                     <CardText className="text-left">
                       <small className="text-muted">{data.date}</small>
                     </CardText>
-                    <Button color="primary">
-                      {data.represent === "hide" ? "Read more" : "Read less"}
+                    <Button color="primary" onClick={func(array[key])}
+                    >
+                      { array[key] ? "Read more" : "Read less"}
                     </Button>
                   </CardBody>
                 </Card>
@@ -64,9 +81,16 @@ function Blogsactivity({ blogsData }) {
             </div>
           );
         })}
+     
+     
       </Row>
+   
+   
     </>
-  );
+ 
+ 
+ 
+ );
 }
 
 export default Blogsactivity;

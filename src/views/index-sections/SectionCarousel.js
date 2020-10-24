@@ -15,7 +15,7 @@ import {
 // core components
 import Fade from "react-reveal/Fade";
 // items is the carousel data to display
-function SectionCarousel({ items }) {
+function SectionCarousel({ data }) {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [animating, setAnimating] = React.useState(false);
   const onExiting = () => {
@@ -38,7 +38,15 @@ function SectionCarousel({ items }) {
     if (animating) return;
     setActiveIndex(newIndex);
   };
+  
+var items;
+if(data)
+{
+  items=Object.values(data);
+}
+  
   return (
+     data?
     <>
       <div className="section pt-o" id="carousel">
         <Fade top>
@@ -63,14 +71,15 @@ function SectionCarousel({ items }) {
                     activeIndex={activeIndex}
                     onClickHandler={goToIndex}
                   />
-                  {items.map((item) => {
+                  {items.map((item,key) => {
                     return (
                       <CarouselItem
+
                         onExiting={onExiting}
                         onExited={onExited}
-                        key={item.src}
+                        key={key}
                       >
-                        <img src={item.src} />
+                        <img src={item.image} />
                         {item.caption ? (
                           <CarouselCaption
                             captionText={item.caption}
@@ -112,7 +121,9 @@ function SectionCarousel({ items }) {
           </Row>
         </Container>
       </div>{" "}
+    </>:<>
     </>
+  
   );
 }
 
