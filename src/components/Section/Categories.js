@@ -6,17 +6,10 @@ import { Link } from "react-router-dom";
 
 import firebase from "../../firebase.js";
 
-// Importing card Data from firebase
-// import Categorylist from "./fetchingCardLogic"
-
-
-// Importing the data of categories
 
  function Categories()
 {
   const [categorylist,setcategorylist]=useState([]);
-
-  
 
     // Function to retreive data from firebase
     const fetchFunction = () => {
@@ -38,12 +31,11 @@ import firebase from "../../firebase.js";
       
     }
   
-   useEffect(async ()=>{
+   useEffect( ()=>{
      
-      await fetchFunction()
+       fetchFunction()
 
   },[])
-
 
 
     return (
