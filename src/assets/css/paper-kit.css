@@ -4028,7 +4028,9 @@ License - nucleoapp.com/license/
 
 .footer {
   background-color: #FFFFFF;
-  line-height: 36px; }
+  line-height: 36px;
+bottom:0,
+position }
   .footer.footer-black h4 {
     color: #FFFFFF; }
   .footer .links {

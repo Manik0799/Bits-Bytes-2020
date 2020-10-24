@@ -17,10 +17,35 @@ function Blogsactivity({ blogsData }) {
  
   const arrayOfObj = Object.values(blogsData);
   var array=[];
-  function func(value)
-  {
-    return (!value);
-  }
+//   function func(data)
+//   {
+         
+//                     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+//   <div class="modal-dialog" role="document">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+//         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//           <span aria-hidden="true">&times;</span>
+//         </button>
+//       </div>
+//       <div class="modal-body">
+//         ...
+//       </div>
+//       <div class="modal-footer">
+//           <div class="left-side">
+//               <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Never mind</button>
+//           </div>
+//           <div class="divider"></div>
+//           <div class="right-side">
+//               <button type="button" class="btn btn-danger btn-link">Delete</button>
+//           </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+
+//   }
   return (
    
     <>
@@ -55,7 +80,8 @@ function Blogsactivity({ blogsData }) {
                     width:"300",
                     height:"500"
                   }}>
-                  <CardImg top src={data.blogimage} alt={data.category}
+                    
+                  <CardImg top src={data.blogimages.image1} alt={data.category}
                    />
                    </div>
 
@@ -71,10 +97,12 @@ function Blogsactivity({ blogsData }) {
                     <CardText className="text-left">
                       <small className="text-muted">{data.date}</small>
                     </CardText>
-                    <Button color="primary" onClick={func(array[key])}
-                    >
-                      { array[key] ? "Read more" : "Read less"}
+                    <Button color="primary" type="button"  data-toggle="modal" data-target="#exampleModalLong"
+                     >
+                      Read More
                     </Button>
+
+               
                   </CardBody>
                 </Card>
               </Col>

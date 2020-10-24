@@ -5,7 +5,10 @@ import { Row, Container } from "reactstrap";
 
 function DemoFooter() {
   return (
-    <div >
+    <div style={{
+      position:"absolute",
+
+    }}>
       <footer className="footer footer-black fixed">
         <Container>
           <Row>

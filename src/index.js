@@ -21,8 +21,6 @@ import getCategoryData from "categoryData";
 
 getCategoryData((fetchedData)=>{
 
-  console.log("Logging fetched data in index.js");
-  console.log( fetchedData)
 
   ReactDOM.render(
     <BrowserRouter>
