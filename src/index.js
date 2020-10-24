@@ -33,9 +33,7 @@ ReactDOM.render(
       
       { 
         fetchedData.map((data, key) =>
-        {
-          console.log(data)
-          return(
+        (
            <Route 
            kay={key}
            path = {data.link}
@@ -51,10 +49,8 @@ ReactDOM.render(
                />
                
            )}
-         />)
-          
-        }
-        )}
+         />
+        ))}
       
        
 
