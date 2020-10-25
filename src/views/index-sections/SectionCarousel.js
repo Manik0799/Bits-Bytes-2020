@@ -14,8 +14,12 @@ import {
 
 // core components
 import Fade from "react-reveal/Fade";
+
+
 // items is the carousel data to display
 function SectionCarousel({ data }) {
+
+
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [animating, setAnimating] = React.useState(false);
   const onExiting = () => {
@@ -72,14 +76,13 @@ if(data)
                     onClickHandler={goToIndex}
                   />
                   {items.map((item,key) => {
-                    return (
-                      <CarouselItem
-
+                    return(
+                          <CarouselItem
                         onExiting={onExiting}
                         onExited={onExited}
                         key={key}
                       >
-                        <img src={item.image} />
+                        <img src={item.image}/>
                         {item.caption ? (
                           <CarouselCaption
                             captionText={item.caption}
@@ -87,6 +90,7 @@ if(data)
                           />
                         ) : null}
                       </CarouselItem>
+                      
                     );
                   })}
                   <a

@@ -13,17 +13,17 @@ function LandingPageHeader() {
  let pageHeader = React.createRef();
 
   React.useEffect(() => {
-    if (window.innerWidth < 991) {
-      const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3;
-        pageHeader.current.style.transform =
-          "translate3d(0," + windowScrollTop + "px,0)";
-      };
-      window.addEventListener("scroll", updateScroll);
-      return function cleanup() {
-        window.removeEventListener("scroll", updateScroll);
-      };
-    }
+    // if (window.innerWidth < 991) {
+    //   const updateScroll = () => {
+    //     let windowScrollTop = window.pageYOffset / 3;
+    //     pageHeader.current.style.transform =
+    //       "translate3d(0," + windowScrollTop + "px,0)";
+    //   };
+    //   window.addEventListener("scroll", updateScroll);
+    //   return function cleanup() {
+    //     window.removeEventListener("scroll", updateScroll);
+    //   };
+    // }
     
     firebase.database().ref("Issues").limitToLast(1).on("value",function(snap){
       console.log(snap.val())
@@ -32,13 +32,13 @@ function LandingPageHeader() {
 
     console.log(magazine);  
     
-  });
+  }, []);
 
   return (
     <>
       <div
         className="page-header"
-        ref={pageHeader}
+        // ref={pageHeader}
         style={{
           backgroundImage: `url(${img})`,
         }}

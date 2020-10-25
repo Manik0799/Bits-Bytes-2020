@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 import {
   Row,
@@ -8,11 +8,14 @@ import {
 
 
 function Blogsactivity({ blogsData }) {
- 
-  const arrayOfObj = Object.values(blogsData);
+
+      const arrayOfObj = Object.values(blogsData);
+      arrayOfObj.reverse()
+
   
   const [modal, setModal] = useState(false)
   const [modalData, setModaldata] = useState(null)
+
 
   const toggle = () =>{
     setModal(!modal)
@@ -44,9 +47,14 @@ function Blogsactivity({ blogsData }) {
                               onClick={() =>{
                                 toggle()
                                 let blogData = []
+
                                 blogData.push(data.title)
-                                blogData.push(data.text)
-                                blogData.push(data.blogimages)
+                                
+                                var paraArray = Object.values(data.text)
+                                blogData.push(paraArray)
+
+                                var imageArray = Object.values(data.blogimages)
+                                blogData.push(imageArray)
 
                                 setModaldata(blogData)
                             }}
@@ -60,28 +68,31 @@ function Blogsactivity({ blogsData }) {
                       {/* Modal */}
                       {modalData ? <Modal isOpen={modal} toggle={toggle} size = "xl" scrollable = {true}>
                         <ModalHeader toggle={toggle}>
-                          <h4>{modalData[0]}</h4>
+                          <p style = {{fontSize : "1.4rem"}}>{modalData[0]}</p>
                         </ModalHeader>
                         <ModalBody>
                             <Row>
-                              <Col lg="12">
-                                {modalData[2].image1 ? <Col lg="6" md = "12" sm = "12" className = "align-items-md-center">
-                                <img src= {modalData[2].image1} style = {{width : "90%", height:"90%"}} />
+
+                             
+                                {modalData[2][0] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
+                                <img src= {modalData[2][0]} style = {{width : "90%", height:"90%"}} />
                                 </Col> : null}
 
-                                {modalData[2].image2 ? <Col lg="6" md = "12" sm = "12" className = "align-items-md-center">
-                                <img src= {modalData[2].image2} style = {{width : "90%", height:"90%"}} />
+                                {modalData[2][1] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
+                                <img src= {modalData[2][1]} style = {{width : "90%", height:"90%"}} />
                                 </Col> : null}
 
-                                {modalData[1].para1 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para1}</p> : null}
+                                {modalData[1].map((paras) =>(
+                                  
+                                    <div>
+                                    <p style = {{fontSize : "1rem"}}>{paras}</p>
+                                    <br></br>
+                                    </div>
+                                   
+                                  
+                                ))}
 
                                 
-                                {modalData[1].para2 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para2}</p> : null}
-                                
-                                 
-
-                                {modalData[1].para3 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para3}</p> : null}
-                              </Col>
                               
                              
                             </Row>

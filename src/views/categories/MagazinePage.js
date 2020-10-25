@@ -1,14 +1,13 @@
 import React,{useEffect,useState} from "react";
-import { Container,Card,CardImg,CardImgOverlay,CardText,CardTitle, Row, Col,Button } from "reactstrap";
+import { Container,Card,CardImg,CardImgOverlay,CardText,CardTitle, Row, Col,Button, Badge } from "reactstrap";
 
 // components to show
 import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar";
 import DemoFooter from "../../components/Footers/DemoFooter.js";
-import Blogsactivity from "components/Section/Blogsactivity";
 
 import firebase from "../../firebase.js";
 
-import img from "assets/img/bruno-abatti.jpg";
+import img from "assets/img/magazine-page-bg.jpg";
 import { Link } from "react-router-dom";
 function MagazinePage() {
  
@@ -18,15 +17,18 @@ function MagazinePage() {
     const fetchFunction = () => {
       let list = []
      
-        firebase.database().ref("Issues").on("value", snapshot => {
+        firebase.database().ref("Issues")
+        .on("value", snapshot => {
 
           snapshot.forEach((snap) => {
               list.push({
-              
-                Image : snap.val().image,
+                date : snap.val().date,
+                image : snap.val().image,
                 text: snap.val().text,
               });
             })
+
+            list.reverse();
             
             setmagazine(list);
             
@@ -57,62 +59,76 @@ function MagazinePage() {
       >
         <div className="filter" />
       </div>
-    <div style={{
+
+<Container>
+<div style={{
         marginLeft:"50px",
         marginTop:"20px",
-    }}>
-        <Row>
-            <Col lg="4" md="6" sm="12" className="ml-auto mr-auto">
-        <Button className="btn-round" color="danger"
-        style={{
-            padding:"50px",
-            fontSize:"32px"
-        }}>BUY NOW</Button>
+            }}>
+        <Row className= "text-center">
+
+          <Col lg="6" md="6" sm="6" className ="text-center">
+        <Button  color="primary" size= "lg" target= "_blank" href= "https://pages.razorpay.com/bitsandbytesmagazine">Buy Now</Button>
         </Col>
-        <Col lg="4" md="6" sm="12" className="ml-auto mr-auto">
-        
-        <Button className="btn-round" color="danger"
-         style={{
-            padding:"50px",
-            fontSize:"32px"
-        }}>Subscribe</Button>
+        <Col lg="6" md="6" sm="6" className="text-center">
+        <Button  color="danger" size = "lg" target= "_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLScvhFtDIx27k8bQgSjTeDOjpwA0Y5fHFWitrcftHo4fU-TLEg/closedform">Subscribe</Button>
         </Col>
+
         </Row>
     </div>
+</Container>
       
-      <div 
+      <Container>
+        <div 
       style={{
           paddingTop:50,
       }} >
-    <Row>
-        <Col  lg="4" md="6" sm="12" className="ml-auto mr-auto">
-            <Link to="/" tag={Link}>
-          <div>
-      <div>
-      <Card inverse>
-          <div className="filter"/>
-        <CardImg
-        style={{
-            width:"300",
-            height:"300"
-        }}
-        src={require("../../../src/assets/img/placeholder.jpg")} alt="Card image cap" />
-        <CardImgOverlay>
-          <CardTitle>Card Title</CardTitle>
-          <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
-        <Button className="btn-round" color="danger" style={{
-            justifySelf:"end"
-        }} >
-            BUY NOW
-        </Button>
-        </CardImgOverlay>
-      </Card>
+        <Row>
+
+          {magazine.map((issue, key) =>{
+
+            return(
+              <Col  lg="4" md="6" sm="12" className="ml-auto mr-auto text-center">
+              
+                <Card>
+                    
+                  
+                  <CardImgOverlay
+                  
+                   style={{
+                      textAlign: "left",
+                    }}>
+                       <Badge
+                      style={{
+                        backgroundColor: "#fff",
+                        color: "#000",
+                        borderTopRightRadius: 5,
+                        fontSize : "1rem"
+                      }}
+                    >
+                      {issue.date}
+                    </Badge>
+                    
+                  
+                  </CardImgOverlay>
+                  <CardImg
+                  
+                  src={issue.image} alt="magazine-issue-front-page" />
+                </Card>
+        
+
+            </Col>
+            )
+                
+          }
+
+          )}
+                  
+          
+            
+        </Row>
     </div>
-      </div>
-      </Link>
-        </Col>
-    </Row>
-    </div>
+      </Container>
     
       <DemoFooter />
     </>

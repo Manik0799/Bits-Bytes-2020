@@ -28,17 +28,48 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import Categories from "components/Section/Categories";
 import SectionCarousel from "../index-sections/SectionCarousel";
 import InfoMain from "../../components/Section/InfoMain.js";
-// Carousel Data
-import LandingPageCarouselData from "../../LandingPageCarouselData";
+
+
+// Firebase
+import firebase from "../../firebase"
+
+
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
+
+  const [carouselData,setCarouseldata]=useState([]);
+
+    // Function to retreive data from firebase
+    const fetchFunction = () => {
+      let sliderData = []
+     
+        firebase.database().ref("LandingPageSlider").on("value", snapshot => {
+
+          snapshot.forEach((snap) => {
+              sliderData.push({
+                caption : snap.val().caption,
+                image : snap.val().image
+              });
+            })
+            
+            setCarouseldata(sliderData);
+            
+      });
+      
+    }
+
+
+
   React.useEffect(() => {
+
+    fetchFunction()
   
     document.body.classList.add("profile-page");
     return function cleanup() {
       document.body.classList.remove("profile-page");
     };
-  });
+
+  }, []);
 
   const [expand, setExpand] = useState(false);
   const allMembers = () => {
@@ -59,7 +90,10 @@ function LandingPage() {
         <Categories />
 
         {/* Carousel */}
-        <SectionCarousel items={LandingPageCarouselData} />
+     
+        <SectionCarousel data={carouselData} />
+
+      
 
         {/* Our Team Section */}
         <div className="section section-dark text-center">

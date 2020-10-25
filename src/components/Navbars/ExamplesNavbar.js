@@ -25,27 +25,27 @@ function ExamplesNavbar() {
     window.scrollTo(0,0);
   };
 
-  React.useEffect(() => {
-    const updateNavbarColor = () => {
-      if (
-        document.documentElement.scrollTop > 299 ||
-        document.body.scrollTop > 299
-      ) {
-        setNavbarColor("");
-      } else if (
-        document.documentElement.scrollTop < 300 ||
-        document.body.scrollTop < 300
-      ) {
-        setNavbarColor("navbar-transparent");
-      }
-    };
+  // React.useEffect(() => {
+  //   const updateNavbarColor = () => {
+  //     if (
+  //       document.documentElement.scrollTop > 299 ||
+  //       document.body.scrollTop > 299
+  //     ) {
+  //       setNavbarColor("");
+  //     } else if (
+  //       document.documentElement.scrollTop < 300 ||
+  //       document.body.scrollTop < 300
+  //     ) {
+  //       setNavbarColor("navbar-transparent");
+  //     }
+  //   };
 
-    window.addEventListener("scroll", updateNavbarColor);
+  //   window.addEventListener("scroll", updateNavbarColor);
 
-    return function cleanup() {
-      window.removeEventListener("scroll", updateNavbarColor);
-    };
-  });
+  //   return function cleanup() {
+  //     window.removeEventListener("scroll", updateNavbarColor);
+  //   };
+  // });
   
   return (
     <Navbar
@@ -94,7 +94,7 @@ function ExamplesNavbar() {
             <NavItem>
               <NavLink
                 tag={Link}
-                onClick={window.scrollTo(0, 1200)}
+                // onClick={window.scrollTo(0, 00)}
               >
                 <i className="fa fa-list-alt" />
                 Categories
@@ -116,9 +116,10 @@ function ExamplesNavbar() {
             <NavItem >
               <NavLink
                 data-placement="bottom"
-                href=""
+                href="https://docs.google.com/forms/d/e/1FAIpQLScvhFtDIx27k8bQgSjTeDOjpwA0Y5fHFWitrcftHo4fU-TLEg/viewform"
                 data-toggle="tooltip" 
                 title="Buy Now Our Subscription to see Exclusive Magazine"
+                target = "_blank"
 
               >
                 <i className="fa fa-shopping-cart"  />
