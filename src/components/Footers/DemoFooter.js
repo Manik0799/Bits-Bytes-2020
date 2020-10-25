@@ -5,11 +5,8 @@ import { Row, Container } from "reactstrap";
 
 function DemoFooter() {
   return (
-    <div style={{
-      position:"absolute",
-
-    }}>
-      <footer className="footer footer-black fixed">
+    <div>
+      <footer className="footer footer-black">
         <Container>
           <Row>
             <nav className="footer-nav fixed">

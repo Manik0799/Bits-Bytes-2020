@@ -20,7 +20,9 @@ function ExamplesNavbar() {
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
+  
     document.documentElement.classList.toggle("nav-open");
+    window.scrollTo(0,0);
   };
 
   React.useEffect(() => {
@@ -82,7 +84,9 @@ function ExamplesNavbar() {
         >
           <Nav navbar>
             <NavItem>
-              <NavLink to="/index" tag={Link}>
+              <NavLink to="/index" tag={Link}
+              
+              onClick={window.scrollTo(0, 0)}>
                 <i className="fa fa-home" /> Home
               </NavLink>
             </NavItem>
@@ -95,24 +99,27 @@ function ExamplesNavbar() {
             <NavItem>
               <NavLink
                 tag={Link}
-                // onClick={window.scrollTo(0, 500)}
+               to="/index" tag={Link}
+                onClick={window.scrollTo(0, 900)}
               >
                 <i className="fa fa-list-alt" />
                 Categories
               </NavLink>
             </NavItem>
-            <NavItem>
+            <NavItem >
               <NavLink
                 data-placement="bottom"
                 href=""
                 target="_blank"
-                title="Buy"
+                data-toggle="tooltip" 
+                title="Buy Now Our Subscription to see Exclusive Magazine"
+
               >
-                <i className="fa fa-shopping-cart" />
+                <i className="fa fa-shopping-cart"  />
                 Buy
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink
                 data-placement="bottom"
                 href="/register-page"
@@ -121,7 +128,7 @@ function ExamplesNavbar() {
                 <i className="fa fa-user" />
                 Login/Signup
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
       </Container>

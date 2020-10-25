@@ -33,6 +33,7 @@ import LandingPageCarouselData from "../../LandingPageCarouselData";
 function LandingPage() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
+  
     document.body.classList.add("profile-page");
     return function cleanup() {
       document.body.classList.remove("profile-page");
@@ -46,6 +47,7 @@ function LandingPage() {
 
   return (
     <>
+  
       <div className="main">
         <ExamplesNavbar />
         <LandingPageHeader />

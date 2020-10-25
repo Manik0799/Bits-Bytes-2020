@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container } from "reactstrap";
 
 // components to show
@@ -7,14 +7,13 @@ import DemoFooter from "../../components/Footers/DemoFooter.js";
 import Blogsactivity from "components/Section/Blogsactivity";
 import SectionCarousel from "../index-sections/SectionCarousel";
 
+import Modal from "../../components/Section/Modal"
 
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
-  // console.log("Data Inside category")
-  // console.log(input)
-  // console.log(pagename)
-  // console.log(backimage)
-  // console.log(roundimage)
-  // console.log(carouselData)
+ 
+
+  const [modalData, setModalData] = useState(null)
+
   return (
     <>
 
@@ -55,8 +54,10 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
           </div>
           
           {/* Blog Cards */}
-          {input? <Blogsactivity blogsData={input} />:<h5></h5>}
-         
+          {input? <Blogsactivity blogsData={input} setModalData = {setModalData} />: null}
+
+
+            {modalData && <Modal data = {modalData}/>}
 
           {/* Carousel Display on each category page */}
           
