@@ -424,9 +424,9 @@ function LandingPage() {
             <Row>
               <Col className="ml-auto mr-auto" md="8">
                 <Fade top>
-                  <h2 className="text-center">Keep in touch?</h2>
+                  <h2 className="text-center">Keep in touch ?</h2>
                 </Fade>
-                <Form className="contact-form">
+                <Form className="contact-form" action = "https://formspree.io/bitsandbytes.in@gmail.com" method = "POST">
                   <Row>
                     <Col md="6">
                       <label>Name</label>
@@ -436,7 +436,7 @@ function LandingPage() {
                             <i className="nc-icon nc-single-02" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Name" type="text" />
+                        <Input placeholder="Name" type="text" name = "name"/>
                       </InputGroup>
                     </Col>
                     <Col md="6">
@@ -447,7 +447,7 @@ function LandingPage() {
                             <i className="nc-icon nc-email-85" />
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input placeholder="Email" type="text" />
+                        <Input placeholder="Email" type="email" name="_replyto" />
                       </InputGroup>
                     </Col>
                   </Row>
@@ -456,10 +456,11 @@ function LandingPage() {
                     placeholder="Tell us your thoughts and feelings..."
                     type="textarea"
                     rows="4"
+                    name = "message"
                   />
                   <Row>
                     <Col className="ml-auto mr-auto" md="4">
-                      <Button className="btn-fill" color="danger" size="lg">
+                      <Button className="btn-fill" color="danger" size="lg" type = "submit">
                         Send Message
                       </Button>
                     </Col>

@@ -1,36 +1,22 @@
 import React, {useState} from "react";
 
 import {
-  Card,
-  CardImg,
-  CardBody,
-  CardText,
-  CardTitle,
-  Button,
   Row,
   Col,
-  CardImgOverlay,
-  Badge,
+  Button, Modal, ModalHeader, ModalBody
 } from "reactstrap";
 
-import Modal from "./Modal"
 
-function Blogsactivity({ blogsData, setModalData }) {
+function Blogsactivity({ blogsData }) {
  
   const arrayOfObj = Object.values(blogsData);
-  // var array=[];
-  // function func(value)
-  // {
-  //   return (!value);
-  // }
+  
+  const [modal, setModal] = useState(false)
+  const [modalData, setModaldata] = useState(null)
 
-  // const handleClick = (blogText, blogImages) => {
-  //   console.log(blogText, blogImages)
-
-      
-  // }
-
-
+  const toggle = () =>{
+    setModal(!modal)
+  }
 
   return (
    
@@ -38,12 +24,10 @@ function Blogsactivity({ blogsData, setModalData }) {
       <Row className="justify-content-md-center">
 
         {arrayOfObj.map((data, key) => {
-          {/* {array.push(false)} */}
           return (
           
             <div key={key}>
               
-              {/* {data.represent=="hide"? */}
               <Col lg="4" md="6" sm="6" className="justify-content-md-center">
 
               {/* Individual Card */}
@@ -52,13 +36,58 @@ function Blogsactivity({ blogsData, setModalData }) {
                         
                         <div className="card-body">
                           <h4 className="card-title">{data.title}</h4>
-                          <p className="card-text">{data.text.substr(0,70) } &nbsp;....</p>
+                          <p className="card-text">{data.text.para1.substr(0,60) } &nbsp;....</p>
                           <p className="card-text">{data.date }</p>
-                          <a  className="btn btn-primary"
-                            onClick = {() => setModalData(data)}
-                          >Read More</a>
+                         
+                          <Button 
+                              color="danger" 
+                              onClick={() =>{
+                                toggle()
+                                let blogData = []
+                                blogData.push(data.title)
+                                blogData.push(data.text)
+                                blogData.push(data.blogimages)
+
+                                setModaldata(blogData)
+                            }}
+                          >
+                            Read Blog
+                          </Button>
                         </div>
                       </div>
+
+
+                      {/* Modal */}
+                      {modalData ? <Modal isOpen={modal} toggle={toggle} size = "xl" scrollable = {true}>
+                        <ModalHeader toggle={toggle}>
+                          <h4>{modalData[0]}</h4>
+                        </ModalHeader>
+                        <ModalBody>
+                            <Row>
+                              <Col lg="12">
+                                {modalData[2].image1 ? <Col lg="6" md = "12" sm = "12" className = "align-items-md-center">
+                                <img src= {modalData[2].image1} style = {{width : "90%", height:"90%"}} />
+                                </Col> : null}
+
+                                {modalData[2].image2 ? <Col lg="6" md = "12" sm = "12" className = "align-items-md-center">
+                                <img src= {modalData[2].image2} style = {{width : "90%", height:"90%"}} />
+                                </Col> : null}
+
+                                {modalData[1].para1 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para1}</p> : null}
+
+                                
+                                {modalData[1].para2 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para2}</p> : null}
+                                
+                                 
+
+                                {modalData[1].para3 ? <p style = {{fontSize : "1rem"}}>{modalData[1].para3}</p> : null}
+                              </Col>
+                              
+                             
+                            </Row>
+                        </ModalBody>
+                        
+                      </Modal> : null}
 
 
               </Col>

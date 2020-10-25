@@ -12,7 +12,7 @@ const getCategoryData = async (callback) => {
         link: snap.val().link,
         title: snap.val().title,
         blogs : snap.val().blog,
-        iconimage: snap.val().icon,
+        iconImage: snap.val().icon,
         backgroundImage: snap.val().background,
         carouselImages: snap.val().caroausal,
       });

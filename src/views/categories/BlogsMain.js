@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Container } from "reactstrap";
 
 // components to show
@@ -7,12 +7,9 @@ import DemoFooter from "../../components/Footers/DemoFooter.js";
 import Blogsactivity from "components/Section/Blogsactivity";
 import SectionCarousel from "../index-sections/SectionCarousel";
 
-import Modal from "../../components/Section/Modal"
 
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
   
-
-  const [modalData, setModalData] = useState(null)
 
   return (
     <>
@@ -35,34 +32,32 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
       <div className="section profile-content">
         <Container>
           <div className="owner">
-            {/* <div className="avatar">
+
+            {roundimage ? <div className="avatar" >
               <img
                 alt="..."
                 className="img-circle img-no-padding img-responsive"
                 src={roundimage}
               />
-            </div> */}
-            <div style={{
-              height:"100%",
-            }}>
-            <div className="name">
-              <h4 className="title">
+            </div> : null}
+                <div className="name">
+              <p className="title" style = {{fontSize : "1.4rem"}}>
                 {pagename}
                 <br />
-              </h4>
+              </p>
             </div>
-          </div>
           
-          {/* Blog Cards */}
-          {input? <Blogsactivity blogsData={input} setModalData = {setModalData} />: null}
-
-
-            {modalData && <Modal data = {modalData}/>}
-
-          {/* Carousel Display on each category page */}
-          
-          {carouselData?<SectionCarousel data={carouselData} />:<h5></h5>}
           </div>
+            
+          
+          
+            {/* Blog Cards */}
+            {input? <Blogsactivity blogsData={input} />: null}
+
+
+            {/* Carousel Display on each category page */}
+            
+            {carouselData?<SectionCarousel data={carouselData} />:<h5></h5>}
         </Container>
       </div>
 
