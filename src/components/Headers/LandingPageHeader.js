@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
 // reactstrap components
 import { Container, Col, Row } from "reactstrap";
-// core component
 
+// core component
 import img from "assets/img/bruno-abatti.jpg";
+import firebase from "../../firebase";
+
 
 function LandingPageHeader() {
- 
+ const [magazine,setmagazine]=useState([]);
+ let pageHeader = React.createRef();
+
+  React.useEffect(() => {
+    if (window.innerWidth < 991) {
+      const updateScroll = () => {
+        let windowScrollTop = window.pageYOffset / 3;
+        pageHeader.current.style.transform =
+          "translate3d(0," + windowScrollTop + "px,0)";
+      };
+      window.addEventListener("scroll", updateScroll);
+      return function cleanup() {
+        window.removeEventListener("scroll", updateScroll);
+      };
+    }
+    
+    firebase.database().ref("Issues").limitToLast(1).on("value",function(snap){
+      console.log(snap.val())
+          setmagazine(snap.val());
+    })
+
+    console.log(magazine);  
+    
+  });
 
   return (
     <>
       <div
         className="page-header"
-        // ref={pageHeader}
+        ref={pageHeader}
         style={{
           backgroundImage: `url(${img})`,
         }}
@@ -50,13 +75,16 @@ function LandingPageHeader() {
               </div>
             </Button> */}
               </div>
+              
             </Col>
 
             {/* To showcase the recent blogs */}
-            <Col lg="6" md="6" sm="12">
+            <Col lg="6" md="6" sm="12" >
+         
               {/* Show recent blog cards */}
             </Col>
           </Row>
+          
         </Container>
       </div>
     </>

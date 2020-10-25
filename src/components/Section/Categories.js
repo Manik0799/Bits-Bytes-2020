@@ -61,7 +61,7 @@ import firebase from "../../firebase.js";
                 {categorylist.map((data, key) => {
                   
                         return (
-                          <Col lg="4" md="6" sm="2" className="ml-auto mr-auto">
+                          <Col lg="4" md="6" sm="12" className="ml-auto mr-auto">
                             <div
                               style={{
                                 margin: "0.5%",

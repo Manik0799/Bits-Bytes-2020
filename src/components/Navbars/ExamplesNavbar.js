@@ -46,6 +46,7 @@ function ExamplesNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+  
   return (
     <Navbar
       className={classnames("fixed-top", navbarColor)}
@@ -57,7 +58,6 @@ function ExamplesNavbar() {
           <NavbarBrand
             data-placement="bottom"
             to="/index"
-            target="_blank"
             title="Company name"
             tag={Link}
           >
@@ -90,17 +90,11 @@ function ExamplesNavbar() {
                 <i className="fa fa-home" /> Home
               </NavLink>
             </NavItem>
-            {/* <NavItem>
-              <NavLink href="" target="_blank">
-                <i className="fa fa-history" /> Recent
-              </NavLink>
-            </NavItem> */}
 
             <NavItem>
               <NavLink
                 tag={Link}
-               to="/index" tag={Link}
-                onClick={window.scrollTo(0, 900)}
+                onClick={window.scrollTo(0, 1200)}
               >
                 <i className="fa fa-list-alt" />
                 Categories
@@ -109,14 +103,26 @@ function ExamplesNavbar() {
             <NavItem >
               <NavLink
                 data-placement="bottom"
+                href="/magazine"
+                data-toggle="tooltip" 
+                title="Watch our Latest Magazine"
+
+              >
+               
+                <i className="fa fa-book"  />
+                Our Magazine
+              </NavLink>
+            </NavItem>
+            <NavItem >
+              <NavLink
+                data-placement="bottom"
                 href=""
-                target="_blank"
                 data-toggle="tooltip" 
                 title="Buy Now Our Subscription to see Exclusive Magazine"
 
               >
                 <i className="fa fa-shopping-cart"  />
-                Buy
+               Subscribe
               </NavLink>
             </NavItem>
             {/* <NavItem>

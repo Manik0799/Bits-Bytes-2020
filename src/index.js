@@ -8,10 +8,9 @@ import "assets/css/bootstrap.min.css";
 import "assets/scss/paper-kit.scss?v=1.2.0";
 import "assets/demo/demo.css?v=1.2.0";
 
-
+import MagazinePage from "./views/categories/MagazinePage.js";
 import RegisterPage from "./views/examples/RegisterPage"
 import Index from "./views/examples/LandingPage"
-import TestPage from "./views/categories/TestPage"
 
 // Category Page Component import
 import BlogsMain from "views/categories/BlogsMain";
@@ -53,7 +52,7 @@ getCategoryData((fetchedData)=>{
             )
           )
         }
-
+     <Route path="/magazine"  render={(props)=><MagazinePage/>}/>
 
         {/* Index Route */}
         <Route path="/index" render={(props) => <Index {...props} />} />
