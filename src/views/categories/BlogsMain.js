@@ -6,7 +6,6 @@ import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar";
 import DemoFooter from "../../components/Footers/DemoFooter.js";
 import Blogsactivity from "components/Section/Blogsactivity";
 import SectionCarousel from "../index-sections/SectionCarousel";
-import ScrollToTop from "components/ScrollToTop";
 
 
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
@@ -15,7 +14,6 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
   return (
     <>
       <ExamplesNavbar />
-      {/* <ProfilePageHeader /> */}
 
       {/* To display the page header image */}
       <div
@@ -24,7 +22,6 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
         }}
         className="page-header page-header-xs"
         data-parallax={true}
-        // ref={pageHeader}
       >
         <div className="filter" />
       </div>
@@ -57,7 +54,7 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
 
             {/* Carousel Display on each category page */}
             
-            {carouselData?<SectionCarousel data={carouselData} />:<h5></h5>}
+            {carouselData?<SectionCarousel data={carouselData} />: null}
         </Container>
       </div>
 

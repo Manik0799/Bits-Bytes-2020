@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 import {
   Row,
@@ -35,7 +35,7 @@ function Blogsactivity({ blogsData }) {
 
               {/* Individual Card */}
                       <div className="card" style={{width: "20rem"}}>
-                      {data.blogimages.image1 ?<img className="card-img-top" src = {data.blogimages.image1} alt="card-image" /> : null}
+                      {data.blogimages.image1 ?<img className="card-img-top" src = {data.blogimages.image1} alt="card-img" /> : null}
                         
                         <div className="card-body">
                           <h4 className="card-title">{data.title}</h4>
@@ -57,13 +57,13 @@ function Blogsactivity({ blogsData }) {
                                 blogData.push(imageArray)
                                  var k=2;
                                  var array=[];
-                                 console.log(imageArray.length)
+
                                  while(k<imageArray.length)
                                  {
                                     array.push(imageArray[k]);
-                                   k++;
+                                    k++;
                                  }
-                                 console.log(array);
+
                                  blogData.push(array);
                                 setModaldata(blogData)
                             }}
@@ -85,11 +85,11 @@ function Blogsactivity({ blogsData }) {
 
                              
                                 {modalData[2][0] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
-                                <img src= {modalData[2][0]} style={{width:"85%",paddingTop:"5px"}} />
+                                <img src= {modalData[2][0]} style={{width:"85%",paddingTop:"5px"}} alt = "img-1"/>
                                 </Col> : null}
 
                                 {modalData[2][1] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
-                                <img src= {modalData[2][1]} style={{width:"85%",paddingTop:"5px"}}/>
+                                <img src= {modalData[2][1]} style={{width:"85%",paddingTop:"5px"}} alt = "img-2" />
                                 </Col> : null}
 
                                 {modalData[1].map((paras) =>(
@@ -104,7 +104,7 @@ function Blogsactivity({ blogsData }) {
                                 ))}
                                 {modalData[3] ? modalData[3].map((element) => (
                                   <Col lg="6" md = "12" sm = "12" className = "text-center">
-                                  <img src= {element} className="img-responsive" style={{width:"85%",paddingTop:"5px"}} />
+                                  <img src= {element} className="img-responsive" style={{width:"85%",paddingTop:"5px"}} alt = "remaining-imgs" />
                                   </Col>
                                 )):null}
                                 
@@ -116,7 +116,6 @@ function Blogsactivity({ blogsData }) {
                         
                       </Modal> : null}
 
-
               </Col>
             </div>
             
@@ -125,13 +124,13 @@ function Blogsactivity({ blogsData }) {
      
      
       </Row>
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
+              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              ...
+            </div>
+          </div>
+        </div>
     </>
  
  

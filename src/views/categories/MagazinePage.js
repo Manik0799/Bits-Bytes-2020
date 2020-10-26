@@ -8,7 +8,7 @@ import DemoFooter from "../../components/Footers/DemoFooter.js";
 import firebase from "../../firebase.js";
 
 import img from "assets/img/magazine-page-bg.jpg";
-import { Link } from "react-router-dom";
+
 function MagazinePage() {
  
     const [magazine,setmagazine]=useState([]);

@@ -82,7 +82,7 @@ if(data)
                         onExited={onExited}
                         key={key}
                       >
-                        <img src={item.image}/>
+                        <img src={item.image} alt = "slider-img"/>
                         {item.caption ? (
                           <CarouselCaption
                             captionText={item.caption}

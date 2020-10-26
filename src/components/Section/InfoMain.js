@@ -22,20 +22,7 @@ function InfoMain() {
                 </div>
               </div>
             </Col>
-            <Col md="4">
-              <div className="info">
-                <div className="icon icon-info">
-                  <i className="nc-icon nc-bulb-63" />
-                </div>
-                <div className="description">
-                  <h4 className="info-title">New Ideas</h4>
-                  <p>
-                    Aware yourself with new ideas presented by some of the real
-                    influencers among us.
-                  </p>
-                </div>
-              </div>
-            </Col>
+            
 
             <Col md="4">
               <div className="info">
@@ -47,6 +34,21 @@ function InfoMain() {
                   <p>
                     Get access to our unique and creatively designed E-magazine
                     issues.
+                  </p>
+                </div>
+              </div>
+            </Col>
+
+            <Col md="4">
+              <div className="info">
+                <div className="icon icon-info">
+                  <i className="nc-icon nc-bulb-63" />
+                </div>
+                <div className="description">
+                  <h4 className="info-title">New Ideas</h4>
+                  <p>
+                    Aware yourself with new ideas presented by some of the real
+                    influencers among us.
                   </p>
                 </div>
               </div>

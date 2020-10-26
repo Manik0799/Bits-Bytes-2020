@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // reactstrap components
-import { Container, Col, Row, Card,CardImg,CardImgOverlay,Badge, Button, CardBody } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
 
 // core component
-import img from "assets/img/landing-bg-1.jpg";
-import cardimage from "assets/img/landing-header-card.jpg"
+import img from "assets/img/landing-bg.jpg";
 
-import firebase from "../../firebase";
 
 
 function LandingPageHeader() {
@@ -73,7 +71,7 @@ function LandingPageHeader() {
                 </Card>
                 <Button color = "danger" size = "lg">See our issues</Button> */}
 
-                <div className="card text-center ml-auto mr-auto" style={{width: "70%",height:"70%"}}>
+                {/* <div className="card text-center ml-auto mr-auto" style={{width: "70%",height:"70%"}}>
            
                       <img className="card-img-top" src = {cardimage} alt="card-image" />
                         
@@ -83,7 +81,7 @@ function LandingPageHeader() {
                             See our issues
                           </Button>
                     
-                      </div>
+                      </div> */}
                 
             </Col>
 

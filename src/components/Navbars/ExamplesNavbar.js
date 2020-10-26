@@ -86,34 +86,36 @@ function ExamplesNavbar() {
                 <i className="fa fa-home" /> Home
               </NavLink>
             </NavItem>
-            {/* <NavItem>
-              <NavLink href="" target="_blank">
-                <i className="fa fa-history" /> Recent
-              </NavLink>
-            </NavItem> */}
+           
 
             <NavItem>
               <NavLink
                 tag={Link}
+                to = "/index" 
                 // onClick={window.scrollTo(0, 500)}
               >
                 <i className="fa fa-list-alt" />
                 Categories
               </NavLink>
             </NavItem>
-            <NavItem>
-             <NavLink
-                data-placement="bottom"
-                href="/magazine"
-                data-toggle="tooltip" 
-                title="Watch our Latest Magazine"
 
-              >
-               
-                <i className="fa fa-book"  />
-                Our Magazine
-              </NavLink>
+
+            <NavItem>
+              <NavLink
+                  data-placement="bottom"
+                  href="/magazine"
+                  data-toggle="tooltip" 
+                  title="Watch our Latest Magazine"
+
+                >
+                
+                  <i className="fa fa-book"  />
+                  Our Magazine
+                </NavLink>
             </NavItem>
+
+
+
             <NavItem >
               <NavLink
                 data-placement="bottom"
@@ -127,6 +129,9 @@ function ExamplesNavbar() {
                Subscribe
               </NavLink>
             </NavItem>
+
+
+
           </Nav>
         </Collapse>
       </Container>

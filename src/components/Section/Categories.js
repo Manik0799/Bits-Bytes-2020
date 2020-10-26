@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Card, CardImg, CardImgOverlay, Row, Col, Container } from "reactstrap";
+import { Card, CardImg, CardImgOverlay, Row, Col, Container, Button} from "reactstrap";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-router-dom";
 
@@ -9,11 +9,17 @@ import firebase from "../../firebase.js";
 
  function Categories()
 {
-  const [categorylist,setcategorylist]=useState([]);
+  const [categorylist,setcategorylist]= useState([]);
+
+  const [expand, setexpand] = useState(false)
+
+  const [primaryCategories, setPrimarycategories] = useState([])
+  
 
     // Function to retreive data from firebase
     const fetchFunction = () => {
       let Categorylist = []
+      let primaryList = []
      
         firebase.database().ref("Category").on("value", snapshot => {
 
@@ -24,8 +30,14 @@ import firebase from "../../firebase.js";
                 cardImageLink : snap.val().cardImageLink
               });
             })
+
+            for(var i = 0; i<6; i++){
+              primaryList.push(Categorylist[i])
+            }
             
+            setPrimarycategories(primaryList)
             setcategorylist(Categorylist);
+
             
       });
       
@@ -38,9 +50,13 @@ import firebase from "../../firebase.js";
   },[])
 
 
+    const handleExpansion = () => {
+      setexpand(!expand)
+    }
+
+
     return (
-      <>
-      
+   
         <div
         className="section section-dark text-center"
         style={{
@@ -57,8 +73,12 @@ import firebase from "../../firebase.js";
 
           {/* Rendering all the cards */}
 
-          <Row className="justify-content-md-center">
-                {categorylist.map((data, key) => {
+
+            {expand ? 
+                <div>
+                
+                    <Row className="justify-content-md-center">
+                      {categorylist.map((data, key) => {
                   
                         return (
                           <Col lg="4" md="6" sm="12" className="ml-auto mr-auto">
@@ -75,7 +95,6 @@ import firebase from "../../firebase.js";
                                   
                                
                               <div key={key}>
-                              {/* {console.log("Category Link - " + data.link)} */}
                                 <Link to={data.link}>
                                   <Card>
                                     <CardImg
@@ -110,7 +129,104 @@ import firebase from "../../firebase.js";
                             </div>
                           </Col>
                         );
-            })} </Row> 
+                  })}
+                    </Row>
+
+                <Button
+                  onClick={handleExpansion}
+                  className="btn-round"
+                  style={{
+                    borderRadius: "50%",
+                    width: 50,
+                    height: 50,
+                    alignItems: "center",
+                  }}
+                  color="neutral"
+                  type="button"
+                  outline
+                >
+                  <div>
+                    <i className="nc-icon nc-minimal-up" size="4x" />
+                  </div>
+                </Button>
+               </div>
+            
+            
+              : 
+              (
+                <div>
+
+                <Row className="justify-content-md-center">
+                  {primaryCategories.map((data, key) => {
+                  
+                        return (
+                          <Col lg="4" md="6" sm="12" className="ml-auto mr-auto">
+                            <div
+                              style={{
+                                margin: "0.5%",
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "none",
+                                alignItems: "center",
+                              }}
+                            >
+                                <Fade left>
+                                  
+                               
+                              <div key={key}>
+                                <Link to={data.link}>
+                                  <Card>
+                                    <CardImg
+                                      src = {data.cardImageLink}
+                                      style={{
+                                        width: "100%",
+                                        height: 300,
+                                        borderRadius: 8,
+                                      }}
+                                    >
+                                    </CardImg>
+                                
+                                    <CardImgOverlay
+                                      style={{
+                                        color: "#fff",
+                                        textDecorationStyle: "double",
+                                        alignContent: "flex-end",
+                                        objectFit: "cover",
+                                        margin: 0,
+                                        backgroundColor: "rgba(0,0,0,0.35)",
+                                        // backgroundImage: `url(${getimage(data.link)})`,
+
+                                      }}
+                                    >
+                                    
+                                      <h2 style={{ fontWeight: "400" }}>{data.title}</h2>
+                                    </CardImgOverlay>
+                                  </Card>
+                                </Link>
+                              </div>
+                              </Fade>
+                            </div>
+                          </Col>
+                        );
+                  })}
+              
+                  </Row>
+                <Button
+                className="btn-fill"
+                color="danger"
+                size="md"
+                onClick={handleExpansion}
+              >
+                See all
+                <span>{"   "}</span>
+                <i className="nc-icon nc-minimal-down" size="4x" />
+              </Button>
+              </div>
+              )
+            
+            
+            }
+               
             
             
          
@@ -118,8 +234,7 @@ import firebase from "../../firebase.js";
       </div>
       
       
-      
-      </>
+    
     )
  
 }
