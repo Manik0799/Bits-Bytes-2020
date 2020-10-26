@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { Container,Card,CardImg,CardImgOverlay,CardText,CardTitle, Row, Col,Button, Badge } from "reactstrap";
+import { Container,Card,CardImg,CardImgOverlay, Row, Col,Button, Badge } from "reactstrap";
 
 // components to show
 import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar";
