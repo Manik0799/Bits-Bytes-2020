@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import classnames from "classnames";
 
 import {
@@ -44,6 +43,14 @@ function ExamplesNavbar() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+ const handleEvent=()=>{
+    window.scrollTo(0,0);
+  }
+  const handleCategory=()=>{
+   
+
+    window.scrollTo(0,window.innerHeight*1.3);
+  }
   return (
     <Navbar
       className={classnames("fixed-top", navbarColor)}
@@ -55,7 +62,6 @@ function ExamplesNavbar() {
           <NavbarBrand
             data-placement="bottom"
             to="/index"
-            target="_blank"
             title="Company name"
             tag={Link}
           >
@@ -81,8 +87,8 @@ function ExamplesNavbar() {
           expand={true}
         >
           <Nav navbar>
-            <NavItem>
-              <NavLink to="/index" tag={Link}>
+            <NavItem >
+              <NavLink to="/index" tag={Link} onClick={handleEvent}>
                 <i className="fa fa-home" /> Home
               </NavLink>
             </NavItem>
@@ -90,9 +96,9 @@ function ExamplesNavbar() {
 
             <NavItem>
               <NavLink
-                tag={Link}
-                to = "/index" 
-                // onClick={window.scrollTo(0, 500)}
+              to="/index"
+              tag={Link}
+              onClick={handleCategory}
               >
                 <i className="fa fa-list-alt" />
                 Categories

@@ -30,12 +30,12 @@ import InfoMain from "../../components/Section/InfoMain.js";
 import firebase from "../../firebase"
 
 import TeamMemberCard from "components/TeamMemberCard"
-import teamMembers from "../../OurTeam"
+import teamMembers from "../../components/OurTeam"
+
 
 
 function LandingPage() {
-
-
+  
   document.documentElement.classList.remove("nav-open");
 
   const [carouselData,setCarouseldata]=useState([]);
@@ -74,6 +74,8 @@ function LandingPage() {
       document.body.classList.remove("profile-page");
     };
 
+  
+   
   }, []);
 
   const handleExpansion = () =>{
@@ -90,8 +92,9 @@ function LandingPage() {
         <InfoMain />
 
         {/* To display the category cards */}
-        <Categories />
-
+      
+        <Categories  />
+     
         {/* Carousel */}
         <SectionCarousel data={carouselData} />
 

@@ -23,15 +23,19 @@ function Blogsactivity({ blogsData }) {
 
   return (
    
-    <>
+    <div className="section text-center"  style={{
+      alignItems: "center",
+      justifyContent: "center",
+    }}>
+      
       <Row className="justify-content-md-center">
 
         {arrayOfObj.map((data, key) => {
           return (
-          
+          <>
             <div key={key}>
               
-              <Col lg="4" md="6" sm="6" className="justify-content-md-center text-center">
+              <Col lg="4" md="6" sm="6" className="text-center">
 
               {/* Individual Card */}
                       <div className="card" style={{width: "20rem"}}>
@@ -72,7 +76,8 @@ function Blogsactivity({ blogsData }) {
                           </Button>
                         </div>
                       </div>
-
+                      </Col>
+            </div>
 
                       {/* Modal */}
                       {modalData ? <Modal isOpen={modal} toggle={toggle} size = "xl" scrollable = {true}>
@@ -115,23 +120,15 @@ function Blogsactivity({ blogsData }) {
                         </ModalBody>
                         
                       </Modal> : null}
-
-              </Col>
-            </div>
+     </>
+             
             
           );
         })}
      
      
       </Row>
-              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              ...
-            </div>
-          </div>
-        </div>
-    </>
+    </div>
  
  
  

@@ -3,13 +3,13 @@ import { Card, CardTitle, CardBody, CardFooter, Button } from "reactstrap";
 
 function TeamMemberCard({teamMember}){
 
-
+      
     return(
         <Card className="card-profile card-plain">
                   <div className="card-avatar">
                         <img
                         alt="team-member-avatar"
-                        src={require("../assets/teamImages/Ekas.jpg")}
+                        src={teamMember.image}
                         />
                   </div>
                   <CardBody>

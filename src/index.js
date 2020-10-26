@@ -22,6 +22,8 @@ getCategoryData((fetchedData)=>{
 
 
   ReactDOM.render(
+     
+
     <BrowserRouter>
    <ScrollToTop/>
       <Switch>
