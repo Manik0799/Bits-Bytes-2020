@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import {
   Row,
   Col,
-  Button, Modal, ModalHeader, ModalBody
+  Button, Modal, ModalHeader, ModalBody,Container
 } from "reactstrap";
 
 
@@ -31,10 +31,10 @@ function Blogsactivity({ blogsData }) {
           
             <div key={key}>
               
-              <Col lg="4" md="6" sm="6" className="justify-content-md-center">
+              <Col lg="4" md="6" sm="6" className="justify-content-md-center text-center">
 
               {/* Individual Card */}
-                      <div class="card" style={{width: "20rem"}}>
+                      <div className="card" style={{width: "20rem"}}>
                       {data.blogimages.image1 ?<img className="card-img-top" src = {data.blogimages.image1} alt="card-image" /> : null}
                         
                         <div className="card-body">
@@ -55,7 +55,16 @@ function Blogsactivity({ blogsData }) {
 
                                 var imageArray = Object.values(data.blogimages)
                                 blogData.push(imageArray)
-
+                                 var k=2;
+                                 var array=[];
+                                 console.log(imageArray.length)
+                                 while(k<imageArray.length)
+                                 {
+                                    array.push(imageArray[k]);
+                                   k++;
+                                 }
+                                 console.log(array);
+                                 blogData.push(array);
                                 setModaldata(blogData)
                             }}
                           >
@@ -67,35 +76,42 @@ function Blogsactivity({ blogsData }) {
 
                       {/* Modal */}
                       {modalData ? <Modal isOpen={modal} toggle={toggle} size = "xl" scrollable = {true}>
-                        <ModalHeader toggle={toggle}>
-                          <p style = {{fontSize : "1.4rem"}}>{modalData[0]}</p>
+                        <ModalHeader toggle={toggle} >
+                          <p style={{fontSize:"1.4rem"}}>{modalData[0]}</p>
                         </ModalHeader>
                         <ModalBody>
+                          <Container>
                             <Row>
 
                              
                                 {modalData[2][0] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
-                                <img src= {modalData[2][0]} style = {{width : "90%", height:"90%"}} />
+                                <img src= {modalData[2][0]} style={{width:"85%",paddingTop:"5px"}} />
                                 </Col> : null}
 
                                 {modalData[2][1] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
-                                <img src= {modalData[2][1]} style = {{width : "90%", height:"90%"}} />
+                                <img src= {modalData[2][1]} style={{width:"85%",paddingTop:"5px"}}/>
                                 </Col> : null}
 
                                 {modalData[1].map((paras) =>(
                                   
                                     <div>
+                                      <br></br>
                                     <p style = {{fontSize : "1rem"}}>{paras}</p>
-                                    <br></br>
+                                    
                                     </div>
                                    
                                   
                                 ))}
-
+                                {modalData[3] ? modalData[3].map((element) => (
+                                  <Col lg="6" md = "12" sm = "12" className = "text-center">
+                                  <img src= {element} className="img-responsive" style={{width:"85%",paddingTop:"5px"}} />
+                                  </Col>
+                                )):null}
                                 
                               
                              
                             </Row>
+                            </Container>
                         </ModalBody>
                         
                       </Modal> : null}

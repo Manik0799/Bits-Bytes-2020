@@ -16,14 +16,14 @@ import Index from "./views/examples/LandingPage"
 import BlogsMain from "views/categories/BlogsMain";
 // Getting all the data about each individual category from firebase
 import getCategoryData from "categoryData";
-
+import ScrollToTop from "../src/components/ScrollToTop";
 
 getCategoryData((fetchedData)=>{
 
 
   ReactDOM.render(
     <BrowserRouter>
-
+   <ScrollToTop/>
       <Switch>
       
         {/* Individual Page Route */}
@@ -64,6 +64,7 @@ getCategoryData((fetchedData)=>{
         <Redirect to="/index" />
 
       </Switch>
+      
     </BrowserRouter>,
     document.getElementById("root")
   );

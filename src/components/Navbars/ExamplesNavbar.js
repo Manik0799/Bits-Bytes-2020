@@ -20,33 +20,30 @@ function ExamplesNavbar() {
 
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
-  
     document.documentElement.classList.toggle("nav-open");
-    window.scrollTo(0,0);
   };
 
-  // React.useEffect(() => {
-  //   const updateNavbarColor = () => {
-  //     if (
-  //       document.documentElement.scrollTop > 299 ||
-  //       document.body.scrollTop > 299
-  //     ) {
-  //       setNavbarColor("");
-  //     } else if (
-  //       document.documentElement.scrollTop < 300 ||
-  //       document.body.scrollTop < 300
-  //     ) {
-  //       setNavbarColor("navbar-transparent");
-  //     }
-  //   };
+  React.useEffect(() => {
+    const updateNavbarColor = () => {
+      if (
+        document.documentElement.scrollTop > 299 ||
+        document.body.scrollTop > 299
+      ) {
+        setNavbarColor("");
+      } else if (
+        document.documentElement.scrollTop < 300 ||
+        document.body.scrollTop < 300
+      ) {
+        setNavbarColor("navbar-transparent");
+      }
+    };
 
-  //   window.addEventListener("scroll", updateNavbarColor);
+    window.addEventListener("scroll", updateNavbarColor);
 
-  //   return function cleanup() {
-  //     window.removeEventListener("scroll", updateNavbarColor);
-  //   };
-  // });
-  
+    return function cleanup() {
+      window.removeEventListener("scroll", updateNavbarColor);
+    };
+  });
   return (
     <Navbar
       className={classnames("fixed-top", navbarColor)}
@@ -58,6 +55,7 @@ function ExamplesNavbar() {
           <NavbarBrand
             data-placement="bottom"
             to="/index"
+            target="_blank"
             title="Company name"
             tag={Link}
           >
@@ -84,24 +82,27 @@ function ExamplesNavbar() {
         >
           <Nav navbar>
             <NavItem>
-              <NavLink to="/index" tag={Link}
-              
-              onClick={window.scrollTo(0, 0)}>
+              <NavLink to="/index" tag={Link}>
                 <i className="fa fa-home" /> Home
               </NavLink>
             </NavItem>
+            {/* <NavItem>
+              <NavLink href="" target="_blank">
+                <i className="fa fa-history" /> Recent
+              </NavLink>
+            </NavItem> */}
 
             <NavItem>
               <NavLink
                 tag={Link}
-                // onClick={window.scrollTo(0, 00)}
+                // onClick={window.scrollTo(0, 500)}
               >
                 <i className="fa fa-list-alt" />
                 Categories
               </NavLink>
             </NavItem>
-            <NavItem >
-              <NavLink
+            <NavItem>
+             <NavLink
                 data-placement="bottom"
                 href="/magazine"
                 data-toggle="tooltip" 
@@ -126,16 +127,6 @@ function ExamplesNavbar() {
                Subscribe
               </NavLink>
             </NavItem>
-            {/* <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="/register-page"
-                title="Login Signup"
-              >
-                <i className="fa fa-user" />
-                Login/Signup
-              </NavLink>
-            </NavItem> */}
           </Nav>
         </Collapse>
       </Container>

@@ -6,8 +6,9 @@ import { Row, Container } from "reactstrap";
 function DemoFooter() {
   return (
     <div>
-      <footer className="footer footer-black">
-        <Container>
+        <Container >
+      <footer className="footer footer-black" >
+      
           <Row>
             <nav className="footer-nav fixed">
               <ul>
@@ -33,8 +34,9 @@ function DemoFooter() {
               </span>
             </div>
           </Row>
-        </Container>
       </footer>
+      
+      </Container>
     </div>
   );
 }

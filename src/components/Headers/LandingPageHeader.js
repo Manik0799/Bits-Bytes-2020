@@ -12,45 +12,24 @@ import firebase from "../../firebase";
 
 function LandingPageHeader() {
 
- const [latestIssue ,setLatestissue]=useState([]);
 //  let pageHeader = React.createRef();
 
-// const fetchFunction = () => {
 
-//     let issue = []
-//     firebase.database().ref("Issues").on("value", snapshot => {
-      
-//       snapshot.forEach((snap) => {
-//           issue.push({
-//                   date : snap.val().date,
-//                   image : snap.val().image,
-//                   text: snap.val().text
-//                 })
-//       })
-
-//       var lastIssue = issue.pop()
-//       setLatestissue(lastIssue);
-//     })
-// }
-
-  useEffect(() => {
-    // if (window.innerWidth < 991) {
-    //   const updateScroll = () => {
-    //     let windowScrollTop = window.pageYOffset / 3;
-    //     pageHeader.current.style.transform =
-    //       "translate3d(0," + windowScrollTop + "px,0)";
-    //   };
-    //   window.addEventListener("scroll", updateScroll);
-    //   return function cleanup() {
-    //     window.removeEventListener("scroll", updateScroll);
-    //   };
-    // }
+  // useEffect(() => {
+  //   if (window.innerWidth < 991) {
+  //     const updateScroll = () => {
+  //       let windowScrollTop = window.pageYOffset / 3;
+  //       pageHeader.current.style.transform =
+  //         "translate3d(0," + windowScrollTop + "px,0)";
+  //     };
+  //     window.addEventListener("scroll", updateScroll);
+  //     return function cleanup() {
+  //       window.removeEventListener("scroll", updateScroll);
+  //     };
+  //   }
     
-    //  fetchFunction()
-
-    //  console.log(latestIssue)
     
-  }, []);
+  // }, []);
 
   return (
     <>
@@ -65,7 +44,7 @@ function LandingPageHeader() {
         <Container>
           <Row xs="2">
 
-            <Col lg="6" md="6" sm="12">
+            <Col lg="6" md="6" sm="12" style={{justifyContent:"center",alignContent:"center"}}>
               <div className="motto">
                 <h1>Bits & Bytes</h1>
                 <h3>
@@ -94,7 +73,7 @@ function LandingPageHeader() {
                 </Card>
                 <Button color = "danger" size = "lg">See our issues</Button> */}
 
-                <div className="card text-center ml-auto mr-auto" style={{width: "70%"}}>
+                <div className="card text-center ml-auto mr-auto" style={{width: "70%",height:"70%"}}>
            
                       <img className="card-img-top" src = {cardimage} alt="card-image" />
                         

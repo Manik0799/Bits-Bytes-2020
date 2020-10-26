@@ -77,9 +77,8 @@ function LandingPage() {
   };
 
   return (
-    <>
   
-      <div className="main">
+      <div className="main"  >
         <ExamplesNavbar />
         <LandingPageHeader />
 
@@ -234,10 +233,10 @@ function LandingPage() {
                 </Card>
               </Col>
             </Row>
-
+   
             <Fade top collapse when={expand}>
               <>
-                {/* Row2 */}(
+                (
                 <Row>
                   <Col lg="3" md="4" sm="6">
                     <Card className="card-profile card-plain">
@@ -340,7 +339,7 @@ function LandingPage() {
                     </Card>
                   </Col>
 
-                  {/* Row 3 */}
+
                   <Col lg="3" md="4" sm="6">
                     <Card className="card-profile card-plain">
                       <div className="card-avatar">
@@ -420,7 +419,7 @@ function LandingPage() {
                 )
               </>
             </Fade>
-            {/* Button to expand the div */}
+            
             {expand ? (
               <Button
                 onClick={allMembers}
@@ -454,7 +453,7 @@ function LandingPage() {
           </Container>
         </div>
 
-        {/*Feedback Section */}
+
         <div className="section landing-section">
           <Container>
             <Row>
@@ -506,9 +505,10 @@ function LandingPage() {
             </Row>
           </Container>
         </div>
+      
+        <DemoFooter />
       </div>
-      <DemoFooter />
-    </>
+      
   );
 }
 

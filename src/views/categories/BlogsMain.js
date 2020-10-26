@@ -6,6 +6,7 @@ import ExamplesNavbar from "../../components/Navbars/ExamplesNavbar";
 import DemoFooter from "../../components/Footers/DemoFooter.js";
 import Blogsactivity from "components/Section/Blogsactivity";
 import SectionCarousel from "../index-sections/SectionCarousel";
+import ScrollToTop from "components/ScrollToTop";
 
 
 function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
@@ -13,7 +14,6 @@ function BlogsMain({ input, pagename, backimage, roundimage, carouselData }) {
 
   return (
     <>
-
       <ExamplesNavbar />
       {/* <ProfilePageHeader /> */}
 
