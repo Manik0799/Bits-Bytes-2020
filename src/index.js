@@ -54,7 +54,7 @@ getCategoryData((fetchedData)=>{
             )
           )
         }
-     <Route path="/magazine"  render={(props)=><MagazinePage/>}/>
+     <Route path="/magazine"  render={(props)=><MagazinePage {...props}/>}/>
 
         {/* Index Route */}
         <Route path="/index" render={(props) => <Index {...props} />} />
