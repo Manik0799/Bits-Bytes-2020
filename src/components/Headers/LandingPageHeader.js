@@ -44,7 +44,7 @@ function LandingPageHeader() {
 
             <Col lg="6" md="6" sm="12" style={{justifyContent:"center",alignContent:"center"}}>
               <div className="motto">
-                <h1>Deploying on netlify</h1>
+                <h1>Bits & Bytes</h1>
                 <h3>
                   Trying to motivate and inspire everyone we come across, by
                   presenting some of the real influencers among us.
