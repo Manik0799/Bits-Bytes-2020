@@ -39,10 +39,11 @@ function Blogsactivity({ blogsData }) {
 
               {/* Individual Card */}
                       <div className="card" style={{width: "20rem"}}>
-                      {data.blogimages.image1 ?<img className="card-img-top" src = {data.blogimages.image1} alt="card-img" /> : null}
+                      {data.blogimages ?<img className="card-img-top" src = {data.blogimages.image1} alt="card-img" /> : null}
                         
                         <div className="card-body">
                           <h4 className="card-title">{data.title}</h4>
+                          <br></br>
                           <p className="card-text">{data.text.para1.substr(0,60) } &nbsp;....</p>
                           <p className="card-text">{data.date }</p>
                          
@@ -51,24 +52,27 @@ function Blogsactivity({ blogsData }) {
                               onClick={() =>{
                                 toggle()
                                 let blogData = []
-
+                                var imageArray = []
+                                var array=[];
                                 blogData.push(data.title)
                                 
                                 var paraArray = Object.values(data.text)
                                 blogData.push(paraArray)
 
-                                var imageArray = Object.values(data.blogimages)
-                                blogData.push(imageArray)
-                                 var k=2;
-                                 var array=[];
-
-                                 while(k<imageArray.length)
-                                 {
-                                    array.push(imageArray[k]);
-                                    k++;
-                                 }
-
-                                 blogData.push(array);
+                                  if(data.blogimages!== undefined){
+                                     imageArray = Object.values(data.blogimages)
+                                     blogData.push(imageArray)
+                                     var k=2;
+                                 
+                                      while(k<imageArray.length)
+                                      {
+                                          array.push(imageArray[k]);
+                                          k++;
+                                      }
+                                      blogData.push(array);
+                                  }
+                                  
+                                 
                                 setModaldata(blogData)
                             }}
                           >
@@ -89,13 +93,17 @@ function Blogsactivity({ blogsData }) {
                             <Row>
 
                              
-                                {modalData[2][0] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
+                                {modalData[2] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
                                 <img src= {modalData[2][0]} style={{width:"85%",paddingTop:"5px"}} alt = "img-1"/>
                                 </Col> : null}
 
-                                {modalData[2][1] ? <Col lg="6" md = "12" sm = "12" className = "text-center">
+                                {modalData[2] ? modalData[2][1] ? (<Col lg="6" md = "12" sm = "12" className = "text-center">
                                 <img src= {modalData[2][1]} style={{width:"85%",paddingTop:"5px"}} alt = "img-2" />
-                                </Col> : null}
+                                </Col> ) : 
+                                
+                                  null 
+                               
+                                  : null}
 
                                 {modalData[1].map((paras) =>(
                                   
@@ -107,6 +115,7 @@ function Blogsactivity({ blogsData }) {
                                    
                                   
                                 ))}
+
                                 {modalData[3] ? modalData[3].map((element) => (
                                   <Col lg="6" md = "12" sm = "12" className = "text-center">
                                   <img src= {element} className="img-responsive" style={{width:"85%",paddingTop:"5px"}} alt = "remaining-imgs" />
