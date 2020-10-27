@@ -62,7 +62,7 @@ function MagazinePage() {
 
 <Container>
 <div style={{
-        marginLeft:"50px",
+       
         marginTop:"20px",
             }}>
         <Row className= "text-center">

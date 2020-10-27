@@ -49,7 +49,7 @@ function ExamplesNavbar() {
   const handleCategory=()=>{
    
 
-    window.scrollTo(0,window.innerHeight*1.3);
+    window.scrollTo(0,window.innerHeight*1.35);
   }
   return (
     <Navbar

@@ -23,17 +23,14 @@ function Blogsactivity({ blogsData }) {
 
   return (
    
-    <div className="section text-center"  style={{
-      alignItems: "center",
-      justifyContent: "center",
-    }}>
+    <div className="section text-center"  >
       
       <Row className="justify-content-md-center">
 
         {arrayOfObj.map((data, key) => {
           return (
           <>
-            <div key={key}>
+            <div key={key} class = "text-center ml-auto mr-auto">
               
               <Col lg="4" md="6" sm="6" className="text-center">
 
