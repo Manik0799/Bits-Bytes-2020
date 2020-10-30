@@ -175,7 +175,7 @@ function LandingPage() {
                 <Fade top>
                   <h2 className="text-center">Keep in touch ?</h2>
                 </Fade>
-                <Form className="contact-form" action = "https://formspree.io/bitsandbytes.in@gmail.com" method = "POST">
+                <Form className="contact-form" action = "https://formspree.io/f/mzbkgedk" method = "POST">
                   <Row>
                     <Col md="6">
                       <label>Name</label>
