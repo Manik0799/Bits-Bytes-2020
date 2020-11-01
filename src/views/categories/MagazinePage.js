@@ -68,7 +68,7 @@ function MagazinePage() {
         <Row className= "text-center">
 
           <Col lg="6" md="6" sm="6" className ="text-center">
-        <Button  color="primary" size= "lg" target= "_blank" href= "https://pages.razorpay.com/bitsandbytesmagazine">Buy Now</Button>
+        <Button  color="primary" size= "lg" target= "_blank" href= "https://spark.adobe.com/page/9suZ7LGMsc55l/">Buy Now</Button>
         </Col>
         <Col lg="6" md="6" sm="6" className="text-center">
         <Button  color="danger" size = "lg" target= "_blank" href = "https://docs.google.com/forms/d/e/1FAIpQLScvhFtDIx27k8bQgSjTeDOjpwA0Y5fHFWitrcftHo4fU-TLEg/closedform">Subscribe</Button>
