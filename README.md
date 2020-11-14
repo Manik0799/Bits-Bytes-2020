@@ -1,7 +1,7 @@
 
 
 # Bits & Bytes 😀 
-Currently Live on [Link](https://bitsandbytesblogs.netlify.app/)  
+Currently Live on [Link](https://bitsndbytes.in)  
 You can explore Blogs Related to your **interest**, Various **Categories**, buy **E-Magazine**. Submit your Suggestions that help there team to improve in the content and contribute for the people to **Stay Updated** and Deliver Content on **Hot**😎 topics.
 
 ### Features
